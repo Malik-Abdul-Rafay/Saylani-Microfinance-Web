@@ -3,27 +3,31 @@ import { useNavigate } from "react-router-dom";
 
 const App = () => {
     const Navigate = useNavigate()
-  const [formData, setFormData] = useState({
-    purpose: "",
-    amount: "",
-    time: "",
-    initialPayment: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "amount" && value > 500000) {
-      alert("Maximum loan amount is 5 Lakh (500,000).");
-      return;
-    }
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Submitted: ", formData);
-    alert("Form Submitted Successfully!");
-  };
+    const [formData, setFormData] = useState({
+        purpose: "",
+        amount: "",
+        time: "",
+        initialPayment: "",
+      });
+    
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        if (name === "amount" && value > 500000) {
+          alert("Maximum loan amount is 5 Lakh (500,000).");
+          return;
+        }
+        setFormData({ ...formData, [name]: value });
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        // Save form data to localStorage
+        localStorage.setItem("formData", JSON.stringify(formData));
+    
+        console.log("Form Submitted: ", formData);
+        alert("Form Submitted Successfully!");
+      };
 
   return (
     <div className="min-h-screen flex items-center justify-center flex-col bg-gray-100 p-6">
