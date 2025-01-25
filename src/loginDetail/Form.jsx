@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
-import { initializeApp } from "firebase/app"; // Import for initialization
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"; // Import the necessary auth functions
+import { initializeApp } from "firebase/app"; 
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"; 
 
 // Initialize Firebase (replace with your Firebase config)
 const firebaseConfig = {
