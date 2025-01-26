@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const App = () => {
+const BuisnessLoan = () => {
     const Navigate = useNavigate()
     const [formData, setFormData] = useState({
         purpose: "",
@@ -36,7 +36,7 @@ const App = () => {
         className="bg-white p-8 rounded-lg shadow-md w-full max-w-md"
       >
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          Wedding Loan Application Form
+          Construction Loan Application Form
         </h2>
 
         {/* Dropdown for Loan Purpose */}
@@ -53,10 +53,9 @@ const App = () => {
             required
           >
             <option value="">Select Purpose</option>
-            <option value="valima">Valima</option>
-            <option value="furniture">Furniture</option>
-            <option value="valima_food">Valima Food</option>
-            <option value="jahez">Jahez</option>
+            <option value="valima">Buy Stall</option>
+            <option value="furniture"> Advance Rent for Shop</option>
+            <option value="valima_food">Shop Assets</option>
           </select>
         </div>
 
@@ -72,7 +71,7 @@ const App = () => {
             value={formData.amount}
             onChange={handleChange}
             className="w-full mt-2 p-2 border border-gray-300 rounded-lg"
-            placeholder="Enter amount (Max: 5 Lakh)"
+            placeholder="Enter amount (Max: 10 Lakh)"
             required
           />
         </div>
@@ -162,4 +161,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default BuisnessLoan;

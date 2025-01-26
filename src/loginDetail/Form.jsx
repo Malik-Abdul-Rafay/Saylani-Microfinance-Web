@@ -3,7 +3,7 @@ import emailjs from "emailjs-com";
 import { initializeApp } from "firebase/app"; 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"; 
 
-// Initialize Firebase (replace with your Firebase config)
+
 const firebaseConfig = {
   apiKey: "AIzaSyD5q97k3mQHu3n1iod5ngTO3-zA5nRqT6Y",
   authDomain: "hakathone-7393e.firebaseapp.com",
@@ -14,9 +14,9 @@ const firebaseConfig = {
   measurementId: "G-SJWQNLCJN1"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app); // Get the authentication instance
+const auth = getAuth(app); 
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -28,7 +28,7 @@ export default function Form() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Function to generate random password
+  
   const generateRandomPassword = (length = 12) => {
     const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
     let randomPassword = "";
@@ -50,26 +50,26 @@ export default function Form() {
     e.preventDefault();
     setLoading(true);
 
-    // Firebase Authentication: Sign up with email and password
-    createUserWithEmailAndPassword(auth, formData.email, password) // Sign up using email and the generated password
+    
+    createUserWithEmailAndPassword(auth, formData.email, password) 
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("User signed up successfully:", user);
 
-        // Send email using EmailJS
+        
         emailjs
           .send(
-            "service_a9ux9eg", // Replace with your service ID
-            "template_60elaj9", // Replace with your template ID
-            { ...formData, password }, // Send form data along with the generated password
-            "Qisr1QFqKu6kGqHui" // Replace with your EmailJS user ID
+            "service_a9ux9eg", 
+            "template_60elaj9", 
+            { ...formData, password }, 
+            "Qisr1QFqKu6kGqHui" 
           )
           .then(
             (result) => {
               console.log("Email sent successfully:", result.text);
               alert("Form Submitted and Email Sent Successfully!");
 
-              // Reset form and password
+              
               setFormData({ name: "", email: "", nic: "" });
               setPassword("");
             },
@@ -79,10 +79,10 @@ export default function Form() {
             }
           )
           .finally(() => {
-            setLoading(false); // Hide loader
+            setLoading(false); 
           });
 
-        // Save form data to localStorage
+        
         localStorage.setItem("formData", JSON.stringify(formData));
       })
       .catch((error) => {
@@ -167,7 +167,7 @@ export default function Form() {
             />
             <button
               type="button"
-              onClick={() => generateRandomPassword(16)} // Button to generate a password
+              onClick={() => generateRandomPassword(16)} 
               className="mt-2 w-full bg-green-600 text-white font-medium py-2 rounded-lg hover:bg-green-700 transition duration-200"
             >
               Generate Random Password
